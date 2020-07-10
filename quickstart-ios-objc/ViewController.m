@@ -8,10 +8,12 @@
 
 #import "ViewController.h"
 #import <DeepAR/ARView.h>
+#import <DeepAR/CameraController.h>
 
 @interface ViewController () <ARViewDelegate>
 
 @property (nonatomic, strong) ARView* arview;
+@property (nonatomic, strong) CameraController* cameraController;
 
 @property (nonatomic, strong) NSMutableArray* masks;
 @property (nonatomic, assign) NSInteger currentMaskIndex;
@@ -52,24 +54,25 @@
 
     self.arview.delegate = self;
     [self.view insertSubview:self.arview atIndex:0];
+    self.cameraController = [[CameraController alloc] init];
+    self.cameraController.arview = self.arview;
 
-    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    [self.arview initializeWithCaptureSessionPreset:AVCaptureSessionPreset1280x720 orientation:orientation cameraPosition:AVCaptureDevicePositionFront];
+    [self.arview initialize];
+    [self.cameraController startCamera];
 
 
     // Create the list of masks, effects and filters.
     self.masks = [NSMutableArray array];
+    [self.masks addObject:@"none"];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"aviators" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"bigmouth" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"dalmatian" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"fatify" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"flowers" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"grumpycat" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"kanye" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"koala" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"lion" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"mudMask" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"obama" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"pug" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"slash" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"sleepingmask" ofType:@""]];
@@ -78,14 +81,13 @@
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"tripleface" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"twistedFace" ofType:@""]];
 
-    
     self.effects = [NSMutableArray array];
     [self.filters addObject:@"none"];
     [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"fire" ofType:@""]];
     [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"heart" ofType:@""]];
     [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"blizzard" ofType:@""]];
     [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"rain" ofType:@""]];
-    
+
     self.filters = [NSMutableArray array];
     [self.filters addObject:@"none"];
     [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"tv80" ofType:@""]];
@@ -94,7 +96,6 @@
     [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"bleachbypass" ofType:@""]];
     [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"realvhs" ofType:@""]];
     [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"filmcolorperfection" ofType:@""]];
-
 }
 
 - (void)viewWillLayoutSubviews {
@@ -116,7 +117,6 @@
     [self.arview shutdown];
 }
 
-
 - (void)switchEffect:(NSMutableArray*)array index:(NSInteger)index slot:(NSString*)slot {
     if ([array[index] isEqualToString:@"none"]) {
         // To clear slot, just pass nil as the path parameter.
@@ -130,7 +130,6 @@
         [self.arview switchEffectWithSlot:slot path:array[index]];
     }
 }
-
 
 - (IBAction)nextEffect:(id)sender {
     
@@ -160,8 +159,6 @@
         default:
             break;
     }
-    
-    
 }
 
 - (IBAction)prevEffect:(id)sender {
@@ -192,7 +189,6 @@
         default:
             break;
     }
-    
 }
 
 - (IBAction)takeScreenshot:(id)sender {
@@ -221,39 +217,28 @@
 }
 
 - (IBAction)switchCamera:(id)sender {
-    AVCaptureDevicePosition position =  [self.arview getCameraPosition] == AVCaptureDevicePositionBack ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack;
-    [self.arview switchCamera:position];
-}
-
-
-
-- (void)viewWillTransitionToSize:(CGSize)size withTransitionCoordinator:(id<UIViewControllerTransitionCoordinator>)coordinator {
-    [super viewWillTransitionToSize:size withTransitionCoordinator:coordinator];
-    // called to stop the camera and prepare for changing the camera orientation
-    [self.arview changeOrientationStart];
-    // sometimes UIDeviceOrientationDidChangeNotification will be delayed, so we call orientationChanged in 0.5 seconds anyway
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self orientationChanged:nil];
-    });
+    self.cameraController.position = self.cameraController.position == AVCaptureDevicePositionBack ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack;
 }
 
 - (void)orientationChanged:(NSNotification *)notification {
     UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
-    // called to reinitialize the engine with the new camera and rendering resolution
-    [self.arview changeOrientation:orientation];
-}
-
-
-- (void)didFinishPreparingForVideoRecording {
-    
+    if (orientation == UIInterfaceOrientationLandscapeLeft) {
+        self.cameraController.videoOrientation = AVCaptureVideoOrientationLandscapeLeft;
+    } else if (orientation == UIInterfaceOrientationLandscapeRight) {
+        self.cameraController.videoOrientation = AVCaptureVideoOrientationLandscapeRight;
+    } else if (orientation == UIInterfaceOrientationPortrait) {
+        self.cameraController.videoOrientation = AVCaptureVideoOrientationPortrait;
+    } else if (orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        self.cameraController.videoOrientation = AVCaptureVideoOrientationPortraitUpsideDown;
+    }
 }
 
 - (void)didStartVideoRecording {
-    
+
 }
 
 - (void)didFinishVideoRecording:(NSString*)videoFilePath {
-    
+    NSLog(@"didFinishVideoRecording");
 }
 
 - (void)recordingFailedWithError:(NSError*)error {
@@ -265,12 +250,11 @@
 }
 
 - (void)didInitialize {
-    
+
 }
 
 - (void)faceVisiblityDidChange:(BOOL)faceVisible {
-    
-}
 
+}
 
 @end

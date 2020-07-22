@@ -8,14 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		A1A1E14F23993CAC000E5E92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A1E14E23993CAC000E5E92 /* AppDelegate.m */; };
-		A1A1E15223993CAC000E5E92 /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A1E15123993CAC000E5E92 /* SceneDelegate.m */; };
 		A1A1E15523993CAC000E5E92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A1E15423993CAC000E5E92 /* ViewController.m */; };
 		A1A1E15823993CAC000E5E92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E15623993CAC000E5E92 /* Main.storyboard */; };
 		A1A1E15A23993CAD000E5E92 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E15923993CAD000E5E92 /* Assets.xcassets */; };
 		A1A1E15D23993CAD000E5E92 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E15B23993CAD000E5E92 /* LaunchScreen.storyboard */; };
 		A1A1E16023993CAD000E5E92 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A1E15F23993CAD000E5E92 /* main.m */; };
-		A1A1E168239941A6000E5E92 /* DeepAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A1E1662399419B000E5E92 /* DeepAR.framework */; };
-		A1A1E169239941A6000E5E92 /* DeepAR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1A1E1662399419B000E5E92 /* DeepAR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A1A1E188239941D7000E5E92 /* twistedFace in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E16C239941D6000E5E92 /* twistedFace */; };
 		A1A1E189239941D7000E5E92 /* sleepingmask in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E16D239941D6000E5E92 /* sleepingmask */; };
 		A1A1E18A239941D7000E5E92 /* dalmatian in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E16E239941D6000E5E92 /* dalmatian */; };
@@ -36,14 +33,14 @@
 		A1A1E199239941D7000E5E92 /* teddycigar in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E17D239941D6000E5E92 /* teddycigar */; };
 		A1A1E19A239941D7000E5E92 /* smallface in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E17E239941D6000E5E92 /* smallface */; };
 		A1A1E19B239941D7000E5E92 /* fire in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E17F239941D6000E5E92 /* fire */; };
-		A1A1E19C239941D7000E5E92 /* kanye in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E180239941D6000E5E92 /* kanye */; };
 		A1A1E19D239941D7000E5E92 /* mudMask in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E181239941D6000E5E92 /* mudMask */; };
 		A1A1E19E239941D7000E5E92 /* aviators in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E182239941D6000E5E92 /* aviators */; };
-		A1A1E19F239941D7000E5E92 /* obama in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E183239941D6000E5E92 /* obama */; };
 		A1A1E1A0239941D7000E5E92 /* filmcolorperfection in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E184239941D6000E5E92 /* filmcolorperfection */; };
 		A1A1E1A1239941D7000E5E92 /* koala in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E185239941D6000E5E92 /* koala */; };
 		A1A1E1A2239941D7000E5E92 /* bigmouth in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E186239941D6000E5E92 /* bigmouth */; };
 		A1A1E1A3239941D7000E5E92 /* lion in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E187239941D6000E5E92 /* lion */; };
+		A1A3FE8B24B8A54B00BB4B4B /* DeepAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A3FE8924B8A34D00BB4B4B /* DeepAR.framework */; };
+		A1A3FE8C24B8A54B00BB4B4B /* DeepAR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1A3FE8924B8A34D00BB4B4B /* DeepAR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -53,7 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A1A1E169239941A6000E5E92 /* DeepAR.framework in Embed Frameworks */,
+				A1A3FE8C24B8A54B00BB4B4B /* DeepAR.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -64,8 +61,6 @@
 		A1A1E14A23993CAC000E5E92 /* quickstart-ios-objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickstart-ios-objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1A1E14D23993CAC000E5E92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A1A1E14E23993CAC000E5E92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		A1A1E15023993CAC000E5E92 /* SceneDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SceneDelegate.h; sourceTree = "<group>"; };
-		A1A1E15123993CAC000E5E92 /* SceneDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SceneDelegate.m; sourceTree = "<group>"; };
 		A1A1E15323993CAC000E5E92 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A1A1E15423993CAC000E5E92 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		A1A1E15723993CAC000E5E92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -73,7 +68,6 @@
 		A1A1E15C23993CAD000E5E92 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A1A1E15E23993CAD000E5E92 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		A1A1E15F23993CAD000E5E92 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		A1A1E1662399419B000E5E92 /* DeepAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DeepAR.framework; sourceTree = "<group>"; };
 		A1A1E16C239941D6000E5E92 /* twistedFace */ = {isa = PBXFileReference; lastKnownFileType = file; path = twistedFace; sourceTree = "<group>"; };
 		A1A1E16D239941D6000E5E92 /* sleepingmask */ = {isa = PBXFileReference; lastKnownFileType = file; path = sleepingmask; sourceTree = "<group>"; };
 		A1A1E16E239941D6000E5E92 /* dalmatian */ = {isa = PBXFileReference; lastKnownFileType = file; path = dalmatian; sourceTree = "<group>"; };
@@ -94,14 +88,13 @@
 		A1A1E17D239941D6000E5E92 /* teddycigar */ = {isa = PBXFileReference; lastKnownFileType = file; path = teddycigar; sourceTree = "<group>"; };
 		A1A1E17E239941D6000E5E92 /* smallface */ = {isa = PBXFileReference; lastKnownFileType = file; path = smallface; sourceTree = "<group>"; };
 		A1A1E17F239941D6000E5E92 /* fire */ = {isa = PBXFileReference; lastKnownFileType = file; path = fire; sourceTree = "<group>"; };
-		A1A1E180239941D6000E5E92 /* kanye */ = {isa = PBXFileReference; lastKnownFileType = file; path = kanye; sourceTree = "<group>"; };
 		A1A1E181239941D6000E5E92 /* mudMask */ = {isa = PBXFileReference; lastKnownFileType = file; path = mudMask; sourceTree = "<group>"; };
 		A1A1E182239941D6000E5E92 /* aviators */ = {isa = PBXFileReference; lastKnownFileType = file; path = aviators; sourceTree = "<group>"; };
-		A1A1E183239941D6000E5E92 /* obama */ = {isa = PBXFileReference; lastKnownFileType = file; path = obama; sourceTree = "<group>"; };
 		A1A1E184239941D6000E5E92 /* filmcolorperfection */ = {isa = PBXFileReference; lastKnownFileType = file; path = filmcolorperfection; sourceTree = "<group>"; };
 		A1A1E185239941D6000E5E92 /* koala */ = {isa = PBXFileReference; lastKnownFileType = file; path = koala; sourceTree = "<group>"; };
 		A1A1E186239941D6000E5E92 /* bigmouth */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigmouth; sourceTree = "<group>"; };
 		A1A1E187239941D6000E5E92 /* lion */ = {isa = PBXFileReference; lastKnownFileType = file; path = lion; sourceTree = "<group>"; };
+		A1A3FE8924B8A34D00BB4B4B /* DeepAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DeepAR.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,7 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1A1E168239941A6000E5E92 /* DeepAR.framework in Frameworks */,
+				A1A3FE8B24B8A54B00BB4B4B /* DeepAR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -135,12 +128,10 @@
 		A1A1E14C23993CAC000E5E92 /* quickstart-ios-objc */ = {
 			isa = PBXGroup;
 			children = (
+				A1A3FE8924B8A34D00BB4B4B /* DeepAR.framework */,
 				A1A1E16B239941D6000E5E92 /* Effects */,
-				A1A1E1662399419B000E5E92 /* DeepAR.framework */,
 				A1A1E14D23993CAC000E5E92 /* AppDelegate.h */,
 				A1A1E14E23993CAC000E5E92 /* AppDelegate.m */,
-				A1A1E15023993CAC000E5E92 /* SceneDelegate.h */,
-				A1A1E15123993CAC000E5E92 /* SceneDelegate.m */,
 				A1A1E15323993CAC000E5E92 /* ViewController.h */,
 				A1A1E15423993CAC000E5E92 /* ViewController.m */,
 				A1A1E15623993CAC000E5E92 /* Main.storyboard */,
@@ -175,10 +166,8 @@
 				A1A1E17D239941D6000E5E92 /* teddycigar */,
 				A1A1E17E239941D6000E5E92 /* smallface */,
 				A1A1E17F239941D6000E5E92 /* fire */,
-				A1A1E180239941D6000E5E92 /* kanye */,
 				A1A1E181239941D6000E5E92 /* mudMask */,
 				A1A1E182239941D6000E5E92 /* aviators */,
-				A1A1E183239941D6000E5E92 /* obama */,
 				A1A1E184239941D6000E5E92 /* filmcolorperfection */,
 				A1A1E185239941D6000E5E92 /* koala */,
 				A1A1E186239941D6000E5E92 /* bigmouth */,
@@ -260,7 +249,6 @@
 				A1A1E195239941D7000E5E92 /* fatify in Resources */,
 				A1A1E198239941D7000E5E92 /* slash in Resources */,
 				A1A1E189239941D7000E5E92 /* sleepingmask in Resources */,
-				A1A1E19F239941D7000E5E92 /* obama in Resources */,
 				A1A1E193239941D7000E5E92 /* blizzard in Resources */,
 				A1A1E19E239941D7000E5E92 /* aviators in Resources */,
 				A1A1E18D239941D7000E5E92 /* grumpycat in Resources */,
@@ -272,7 +260,6 @@
 				A1A1E191239941D7000E5E92 /* flowers in Resources */,
 				A1A1E196239941D7000E5E92 /* tripleface in Resources */,
 				A1A1E19B239941D7000E5E92 /* fire in Resources */,
-				A1A1E19C239941D7000E5E92 /* kanye in Resources */,
 				A1A1E1A3239941D7000E5E92 /* lion in Resources */,
 				A1A1E18A239941D7000E5E92 /* dalmatian in Resources */,
 				A1A1E15823993CAC000E5E92 /* Main.storyboard in Resources */,
@@ -289,7 +276,6 @@
 				A1A1E15523993CAC000E5E92 /* ViewController.m in Sources */,
 				A1A1E14F23993CAC000E5E92 /* AppDelegate.m in Sources */,
 				A1A1E16023993CAD000E5E92 /* main.m in Sources */,
-				A1A1E15223993CAC000E5E92 /* SceneDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +422,7 @@
 					"$(PROJECT_DIR)/quickstart-ios-objc",
 				);
 				INFOPLIST_FILE = "quickstart-ios-objc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -457,6 +444,7 @@
 					"$(PROJECT_DIR)/quickstart-ios-objc",
 				);
 				INFOPLIST_FILE = "quickstart-ios-objc/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

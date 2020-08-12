@@ -60,6 +60,8 @@
     [self.arview initialize];
     [self.cameraController startCamera];
 
+    AVAudioSession *session = [AVAudioSession sharedInstance];
+    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
 
     // Create the list of masks, effects and filters.
     self.masks = [NSMutableArray array];

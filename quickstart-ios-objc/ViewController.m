@@ -10,7 +10,7 @@
 #import <DeepAR/ARView.h>
 #import <DeepAR/CameraController.h>
 
-@interface ViewController () <ARViewDelegate>
+@interface ViewController () <DeepARDelegate>
 
 @property (nonatomic, strong) ARView* arview;
 @property (nonatomic, strong) CameraController* cameraController;

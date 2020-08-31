@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9A4970F124FD07BF00DD9C86 /* DeepAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4970EF24FD07B600DD9C86 /* DeepAR.framework */; };
+		9A4970F224FD07BF00DD9C86 /* DeepAR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4970EF24FD07B600DD9C86 /* DeepAR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A1A1E14F23993CAC000E5E92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A1E14E23993CAC000E5E92 /* AppDelegate.m */; };
 		A1A1E15523993CAC000E5E92 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A1E15423993CAC000E5E92 /* ViewController.m */; };
 		A1A1E15823993CAC000E5E92 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E15623993CAC000E5E92 /* Main.storyboard */; };
@@ -39,8 +41,6 @@
 		A1A1E1A1239941D7000E5E92 /* koala in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E185239941D6000E5E92 /* koala */; };
 		A1A1E1A2239941D7000E5E92 /* bigmouth in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E186239941D6000E5E92 /* bigmouth */; };
 		A1A1E1A3239941D7000E5E92 /* lion in Resources */ = {isa = PBXBuildFile; fileRef = A1A1E187239941D6000E5E92 /* lion */; };
-		A1A3FE8B24B8A54B00BB4B4B /* DeepAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A1A3FE8924B8A34D00BB4B4B /* DeepAR.framework */; };
-		A1A3FE8C24B8A54B00BB4B4B /* DeepAR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = A1A3FE8924B8A34D00BB4B4B /* DeepAR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -50,7 +50,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				A1A3FE8C24B8A54B00BB4B4B /* DeepAR.framework in Embed Frameworks */,
+				9A4970F224FD07BF00DD9C86 /* DeepAR.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,6 +58,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		9A4970EF24FD07B600DD9C86 /* DeepAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DeepAR.framework; sourceTree = SOURCE_ROOT; };
 		A1A1E14A23993CAC000E5E92 /* quickstart-ios-objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickstart-ios-objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1A1E14D23993CAC000E5E92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A1A1E14E23993CAC000E5E92 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -94,7 +95,6 @@
 		A1A1E185239941D6000E5E92 /* koala */ = {isa = PBXFileReference; lastKnownFileType = file; path = koala; sourceTree = "<group>"; };
 		A1A1E186239941D6000E5E92 /* bigmouth */ = {isa = PBXFileReference; lastKnownFileType = file; path = bigmouth; sourceTree = "<group>"; };
 		A1A1E187239941D6000E5E92 /* lion */ = {isa = PBXFileReference; lastKnownFileType = file; path = lion; sourceTree = "<group>"; };
-		A1A3FE8924B8A34D00BB4B4B /* DeepAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DeepAR.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,7 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1A3FE8B24B8A54B00BB4B4B /* DeepAR.framework in Frameworks */,
+				9A4970F124FD07BF00DD9C86 /* DeepAR.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -128,7 +128,7 @@
 		A1A1E14C23993CAC000E5E92 /* quickstart-ios-objc */ = {
 			isa = PBXGroup;
 			children = (
-				A1A3FE8924B8A34D00BB4B4B /* DeepAR.framework */,
+				9A4970EF24FD07B600DD9C86 /* DeepAR.framework */,
 				A1A1E16B239941D6000E5E92 /* Effects */,
 				A1A1E14D23993CAC000E5E92 /* AppDelegate.h */,
 				A1A1E14E23993CAC000E5E92 /* AppDelegate.m */,
@@ -420,6 +420,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/quickstart-ios-objc",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "quickstart-ios-objc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
@@ -442,6 +443,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/quickstart-ios-objc",
+					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "quickstart-ios-objc/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.0;

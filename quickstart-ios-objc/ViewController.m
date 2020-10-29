@@ -7,12 +7,15 @@
 //
 
 #import "ViewController.h"
-#import <DeepAR/ARView.h>
-#import <DeepAR/CameraController.h>
+#import "DeepARSharedManager.h"
+@import UIKit;
+
+static int viewCount = 0;
 
 @interface ViewController () <DeepARDelegate>
 
-@property (nonatomic, strong) ARView* arview;
+@property (nonatomic, strong) UIView* arview;
+@property (nonatomic, strong) DeepAR* deepAR;
 @property (nonatomic, strong) CameraController* cameraController;
 
 @property (nonatomic, strong) NSMutableArray* masks;
@@ -29,6 +32,7 @@
 @property (nonatomic, strong) IBOutlet UIButton* masksButton;
 @property (nonatomic, strong) IBOutlet UIButton* effectsButton;
 @property (nonatomic, strong) IBOutlet UIButton* filtersButton;
+@property (weak, nonatomic) IBOutlet UIButton *backViewButton;
 
 
 @end
@@ -37,6 +41,11 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    DeepARSharedManager * deepARManager = [DeepARSharedManager getShaderManager];
+    self.deepAR = deepARManager.deepAR;
+    self.arview = deepARManager.arview;
+    self.cameraController = deepARManager.cameraController;
 
     self.masksButton.backgroundColor = [UIColor lightGrayColor];
     self.effectsButton.backgroundColor = [UIColor clearColor];
@@ -46,22 +55,6 @@
     self.currentEffectIndex = 0;
     self.currentFilterIndex = 0;
 
-    
-    // Instantiate ARView and add it to view hierarchy.
-    self.arview = [[ARView alloc] initWithFrame:[UIScreen mainScreen].bounds];
-
-    [self.arview setLicenseKey:@"your_license_key_goes_here"];
-
-    self.arview.delegate = self;
-    [self.view insertSubview:self.arview atIndex:0];
-    self.cameraController = [[CameraController alloc] init];
-    self.cameraController.arview = self.arview;
-
-    [self.arview initialize];
-    [self.cameraController startCamera];
-
-    AVAudioSession *session = [AVAudioSession sharedInstance];
-    [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
 
     // Create the list of masks, effects and filters.
     self.masks = [NSMutableArray array];
@@ -98,6 +91,11 @@
     [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"bleachbypass" ofType:@""]];
     [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"realvhs" ofType:@""]];
     [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"filmcolorperfection" ofType:@""]];
+    
+    viewCount++;
+    if(viewCount == 1) {
+        [self.backViewButton setHidden:YES];
+    }
 }
 
 - (void)viewWillLayoutSubviews {
@@ -106,30 +104,40 @@
 }
 
 - (void)viewWillAppear:(BOOL)animated {
+    [self.view insertSubview:self.arview atIndex:0];
+    self.deepAR.delegate = self;
+    
     [super viewWillAppear:animated];
     [[NSNotificationCenter defaultCenter] addObserver:self  selector:@selector(orientationChanged:) name:UIDeviceOrientationDidChangeNotification  object:nil];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
+    [self.arview removeFromSuperview];
+    self.deepAR.delegate = nil;
+    
     [super viewWillDisappear:animated];
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)dealloc {
-    [self.arview shutdown];
+    viewCount--;
+    if(viewCount == 0) {
+        [self.deepAR shutdown];
+        [self.arview removeFromSuperview];
+    }
 }
 
 - (void)switchEffect:(NSMutableArray*)array index:(NSInteger)index slot:(NSString*)slot {
     if ([array[index] isEqualToString:@"none"]) {
         // To clear slot, just pass nil as the path parameter.
-        [self.arview switchEffectWithSlot:slot path:nil];
+        [self.deepAR switchEffectWithSlot:slot path:nil];
     } else {
         // Switches the effects in the slot. Path parameter is the absolute path to the effect file.
         // Slot is a way to have multiple effects active at the same time. There is no limitation to
         // the number of slots, but there can be only one active effect in one slot. If we load
         // the new effect in already occupied slot, the old effect will be removed and the new one
         // will be added.
-        [self.arview switchEffectWithSlot:slot path:array[index]];
+        [self.deepAR switchEffectWithSlot:slot path:array[index]];
     }
 }
 
@@ -194,7 +202,7 @@
 }
 
 - (IBAction)takeScreenshot:(id)sender {
-    [self.arview takeScreenshot];
+    [self.deepAR takeScreenshot];
 }
 
 - (IBAction)masksSelected:(id)sender {
@@ -220,6 +228,21 @@
 
 - (IBAction)switchCamera:(id)sender {
     self.cameraController.position = self.cameraController.position == AVCaptureDevicePositionBack ? AVCaptureDevicePositionFront : AVCaptureDevicePositionBack;
+}
+
+- (IBAction)goToNextARView:(id)sender {
+    UIStoryboard * storyboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    ViewController * newView = [storyboard instantiateViewControllerWithIdentifier:@"ARViewController"];
+    newView.modalPresentationStyle = UIModalPresentationFullScreen;
+    //newView.modalTransitionStyle = UIModalTransitionStyleCrossDissolve;
+    
+    [self presentViewController:newView animated:YES completion:nil];
+    
+}
+
+- (IBAction)goToPreviousView:(id)sender {
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)orientationChanged:(NSNotification *)notification {
@@ -252,7 +275,7 @@
 }
 
 - (void)didInitialize {
-
+    
 }
 
 - (void)faceVisiblityDidChange:(BOOL)faceVisible {

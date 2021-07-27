@@ -7,11 +7,12 @@
 //
 
 #import "ViewController.h"
-#import <DeepAR/ARView.h>
+#import <DeepAR/DeepAR.h>
 #import <DeepAR/CameraController.h>
 
 @interface ViewController () <DeepARDelegate>
 
+@property (nonatomic, strong) DeepAR* deepar;
 @property (nonatomic, strong) ARView* arview;
 @property (nonatomic, strong) CameraController* cameraController;
 
@@ -48,16 +49,17 @@
 
     
     // Instantiate ARView and add it to view hierarchy.
-    self.arview = [[ARView alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    self.deepar = [[DeepAR alloc] init];
 
     [self.arview setLicenseKey:@"your_license_key_goes_here"];
+    [self.deepar initialize];
+    self.deepar.delegate = self;
 
-    self.arview.delegate = self;
+    self.arview = (ARView*)[self.deepar createARViewWithFrame:[UIScreen mainScreen].bounds];
     [self.view insertSubview:self.arview atIndex:0];
     self.cameraController = [[CameraController alloc] init];
-    self.cameraController.arview = self.arview;
+    self.cameraController.deepAR = self.deepar;
 
-    [self.arview initialize];
     [self.cameraController startCamera];
 
     AVAudioSession *session = [AVAudioSession sharedInstance];
@@ -116,20 +118,20 @@
 }
 
 - (void)dealloc {
-    [self.arview shutdown];
+    [self.deepar shutdown];
 }
 
 - (void)switchEffect:(NSMutableArray*)array index:(NSInteger)index slot:(NSString*)slot {
     if ([array[index] isEqualToString:@"none"]) {
         // To clear slot, just pass nil as the path parameter.
-        [self.arview switchEffectWithSlot:slot path:nil];
+        [self.deepar switchEffectWithSlot:slot path:nil];
     } else {
         // Switches the effects in the slot. Path parameter is the absolute path to the effect file.
         // Slot is a way to have multiple effects active at the same time. There is no limitation to
         // the number of slots, but there can be only one active effect in one slot. If we load
         // the new effect in already occupied slot, the old effect will be removed and the new one
         // will be added.
-        [self.arview switchEffectWithSlot:slot path:array[index]];
+        [self.deepar switchEffectWithSlot:slot path:array[index]];
     }
 }
 
@@ -194,7 +196,7 @@
 }
 
 - (IBAction)takeScreenshot:(id)sender {
-    [self.arview takeScreenshot];
+    [self.deepar takeScreenshot];
 }
 
 - (IBAction)masksSelected:(id)sender {

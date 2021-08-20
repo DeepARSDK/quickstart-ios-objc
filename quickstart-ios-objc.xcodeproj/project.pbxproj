@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8DC5173626CFFC2900481208 /* Helmet_PBR_V1 in Resources */ = {isa = PBXBuildFile; fileRef = 8DC5173526CFFC2900481208 /* Helmet_PBR_V1 */; };
 		9A4970F124FD07BF00DD9C86 /* DeepAR.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4970EF24FD07B600DD9C86 /* DeepAR.framework */; };
 		9A4970F224FD07BF00DD9C86 /* DeepAR.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A4970EF24FD07B600DD9C86 /* DeepAR.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		A1A1E14F23993CAC000E5E92 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A1A1E14E23993CAC000E5E92 /* AppDelegate.m */; };
@@ -58,6 +59,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		8DC5173526CFFC2900481208 /* Helmet_PBR_V1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = Helmet_PBR_V1; sourceTree = "<group>"; };
 		9A4970EF24FD07B600DD9C86 /* DeepAR.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DeepAR.framework; sourceTree = SOURCE_ROOT; };
 		A1A1E14A23993CAC000E5E92 /* quickstart-ios-objc.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "quickstart-ios-objc.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		A1A1E14D23993CAC000E5E92 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 		A1A1E16B239941D6000E5E92 /* Effects */ = {
 			isa = PBXGroup;
 			children = (
+				8DC5173526CFFC2900481208 /* Helmet_PBR_V1 */,
 				A1A1E16C239941D6000E5E92 /* twistedFace */,
 				A1A1E16D239941D6000E5E92 /* sleepingmask */,
 				A1A1E16E239941D6000E5E92 /* dalmatian */,
@@ -249,6 +252,7 @@
 				A1A1E195239941D7000E5E92 /* fatify in Resources */,
 				A1A1E198239941D7000E5E92 /* slash in Resources */,
 				A1A1E189239941D7000E5E92 /* sleepingmask in Resources */,
+				8DC5173626CFFC2900481208 /* Helmet_PBR_V1 in Resources */,
 				A1A1E193239941D7000E5E92 /* blizzard in Resources */,
 				A1A1E19E239941D7000E5E92 /* aviators in Resources */,
 				A1A1E18D239941D7000E5E92 /* grumpycat in Resources */,

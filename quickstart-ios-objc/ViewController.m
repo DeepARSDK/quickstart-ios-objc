@@ -69,6 +69,7 @@
     self.masks = [NSMutableArray array];
     [self.masks addObject:@"none"];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"aviators" ofType:@""]];
+    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"Helmet_PBR_V1" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"bigmouth" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"dalmatian" ofType:@""]];
     [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"fatify" ofType:@""]];

@@ -51,7 +51,7 @@
     // Instantiate ARView and add it to view hierarchy.
     self.deepar = [[DeepAR alloc] init];
 
-    [self.arview setLicenseKey:@"your_license_key_goes_here"];
+    [self.deepar setLicenseKey:@"your_license_key_goes_here"];
     [self.deepar initialize];
     self.deepar.delegate = self;
 

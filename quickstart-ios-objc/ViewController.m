@@ -61,7 +61,7 @@
     // Create the list of effects .
 
     self.effects = [NSMutableArray array];
-    [self.filters addObject:@"none"];
+    [self.effects addObject:@"none"];
     [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"viking_helmet.deepar" ofType:@""]];
     [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"MakeupLook.deepar" ofType:@""]];
     [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Split_View_Look.deepar" ofType:@""]];

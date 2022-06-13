@@ -39,14 +39,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
 
-    self.masksButton.backgroundColor = [UIColor lightGrayColor];
-    self.effectsButton.backgroundColor = [UIColor clearColor];
-    self.filtersButton.backgroundColor = [UIColor clearColor];
-    self.currentMode = 0;
-    self.currentMaskIndex = 0;
     self.currentEffectIndex = 0;
-    self.currentFilterIndex = 0;
-
     
     // Instantiate ARView and add it to view hierarchy.
     self.deepar = [[DeepAR alloc] init];
@@ -65,42 +58,29 @@
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
 
-    // Create the list of masks, effects and filters.
-    self.masks = [NSMutableArray array];
-    [self.masks addObject:@"none"];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"aviators" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"Helmet_PBR_V1" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"bigmouth" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"dalmatian" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"fatify" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"flowers" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"grumpycat" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"koala" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"lion" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"mudMask" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"pug" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"slash" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"sleepingmask" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"smallface" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"teddycigar" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"tripleface" ofType:@""]];
-    [self.masks addObject:[[NSBundle mainBundle]  pathForResource:@"twistedFace" ofType:@""]];
+    // Create the list of effects .
 
     self.effects = [NSMutableArray array];
     [self.filters addObject:@"none"];
-    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"fire" ofType:@""]];
-    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"heart" ofType:@""]];
-    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"blizzard" ofType:@""]];
-    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"rain" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"viking_helmet.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"MakeupLook.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Split_View_Look.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Emotions_Exaggerator.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Emotion_Meter.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Stallone.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"flower_face.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"galaxy_background.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Humanoid.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Neon_Devil_Horns.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Ping_Pong.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Pixel_Hearts.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Snail.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Hope.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Vendetta_Mask.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Fire_Effect.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"burning_effect.deepar" ofType:@""]];
+    [self.effects addObject:[[NSBundle mainBundle]  pathForResource:@"Elephant_Trunk.deepar" ofType:@""]];
 
-    self.filters = [NSMutableArray array];
-    [self.filters addObject:@"none"];
-    [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"tv80" ofType:@""]];
-    [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"drawingmanga" ofType:@""]];
-    [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"sepia" ofType:@""]];
-    [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"bleachbypass" ofType:@""]];
-    [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"realvhs" ofType:@""]];
-    [self.filters addObject:[[NSBundle mainBundle]  pathForResource:@"filmcolorperfection" ofType:@""]];
 }
 
 - (void)viewWillLayoutSubviews {
@@ -137,88 +117,23 @@
 }
 
 - (IBAction)nextEffect:(id)sender {
-    
-    switch (self.currentMode) {
-        case 0:
-            self.currentMaskIndex++;
-            if (self.currentMaskIndex >= self.masks.count) {
-                self.currentMaskIndex = 0;
-            }
-            [self switchEffect:self.masks index:self.currentMaskIndex slot:@"mask"];
-            break;
-        case 1:
-            self.currentEffectIndex++;
-            if (self.currentEffectIndex >= self.effects.count) {
-                self.currentEffectIndex = 0;
-            }
-            [self switchEffect:self.effects index:self.currentEffectIndex slot:@"effect"];
-            break;
-        case 2:
-            self.currentFilterIndex++;
-            if (self.currentFilterIndex >= self.filters.count) {
-                self.currentFilterIndex = 0;
-            }
-            [self switchEffect:self.filters index:self.currentFilterIndex slot:@"filter"];
-            break;
-            
-        default:
-            break;
+    self.currentEffectIndex++;
+    if (self.currentEffectIndex >= self.effects.count) {
+        self.currentEffectIndex = 0;
     }
+    [self switchEffect:self.effects index:self.currentEffectIndex slot:@"effect"];
 }
 
 - (IBAction)prevEffect:(id)sender {
-    
-    switch (self.currentMode) {
-        case 0:
-            self.currentMaskIndex--;
-            if (self.currentMaskIndex < 0) {
-                self.currentMaskIndex = self.masks.count - 1;
-            }
-            [self switchEffect:self.masks index:self.currentMaskIndex slot:@"mask"];
-            break;
-        case 1:
-            self.currentEffectIndex--;
-            if (self.currentEffectIndex < 0) {
-                self.currentEffectIndex = self.effects.count - 1;
-            }
-            [self switchEffect:self.effects index:self.currentEffectIndex slot:@"effect"];
-            break;
-        case 2:
-            self.currentFilterIndex--;
-            if (self.currentFilterIndex < 0) {
-                self.currentFilterIndex = self.filters.count - 1;
-            }
-            [self switchEffect:self.filters index:self.currentFilterIndex slot:@"filter"];
-            break;
-            
-        default:
-            break;
+    self.currentEffectIndex--;
+    if (self.currentEffectIndex < 0) {
+        self.currentEffectIndex = self.effects.count - 1;
     }
+    [self switchEffect:self.effects index:self.currentEffectIndex slot:@"effect"];
 }
 
 - (IBAction)takeScreenshot:(id)sender {
     [self.deepar takeScreenshot];
-}
-
-- (IBAction)masksSelected:(id)sender {
-    self.currentMode = 0;
-    self.masksButton.backgroundColor = [UIColor lightGrayColor];
-    self.effectsButton.backgroundColor = [UIColor clearColor];
-    self.filtersButton.backgroundColor = [UIColor clearColor];
-}
-
-- (IBAction)effectsSelected:(id)sender {
-    self.currentMode = 1;
-    self.masksButton.backgroundColor = [UIColor clearColor];
-    self.effectsButton.backgroundColor = [UIColor lightGrayColor];
-    self.filtersButton.backgroundColor = [UIColor clearColor];
-}
-
-- (IBAction)filtersSelected:(id)sender {
-    self.currentMode = 2;
-    self.masksButton.backgroundColor = [UIColor clearColor];
-    self.effectsButton.backgroundColor = [UIColor clearColor];
-    self.filtersButton.backgroundColor = [UIColor lightGrayColor];
 }
 
 - (IBAction)switchCamera:(id)sender {

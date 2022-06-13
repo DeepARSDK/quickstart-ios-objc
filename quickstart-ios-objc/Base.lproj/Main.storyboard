@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,7 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZvZ-FY-Og8">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZvZ-FY-Og8">
                                 <rect key="frame" x="0.0" y="537" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="70" id="0cV-9a-66g"/>
@@ -32,7 +33,7 @@
                                     <action selector="prevEffect:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8pq-su-Rsd"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmB-Eo-kaY">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jmB-Eo-kaY">
                                 <rect key="frame" x="305" y="537" width="70" height="70"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="70" id="54J-0s-KZA"/>
@@ -57,7 +58,7 @@
                                     <action selector="switchCamera:" destination="BYZ-38-t0r" eventType="touchUpInside" id="YMh-Ko-YeJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfB-8H-jIn">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LfB-8H-jIn">
                                 <rect key="frame" x="147.5" y="527" width="80" height="80"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="80" id="Dnx-yT-bvp"/>
@@ -71,63 +72,19 @@
                                     <action selector="takeScreenshot:" destination="BYZ-38-t0r" eventType="touchUpInside" id="ogr-kq-6Jp"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mj8-Kz-fwo">
-                                <rect key="frame" x="147.5" y="615" width="80" height="32"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="pNo-Sh-PDL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Effects">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="effectsSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="cWl-1u-Bup"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ICg-Fl-alc">
-                                <rect key="frame" x="227.5" y="615" width="80" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Filters"/>
-                                <connections>
-                                    <action selector="filtersSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="u3I-ZI-Hm9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" selected="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E7y-GG-QwB">
-                                <rect key="frame" x="67.5" y="615" width="80" height="32"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
-                                <state key="normal" title="Masks">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="masksSelected:" destination="BYZ-38-t0r" eventType="touchUpInside" id="run-Xj-HvQ"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="ICg-Fl-alc" firstAttribute="leading" secondItem="Mj8-Kz-fwo" secondAttribute="trailing" id="3zS-Vu-4vh"/>
-                            <constraint firstItem="Mj8-Kz-fwo" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="C7Y-Tk-HJh"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ZvZ-FY-Og8" secondAttribute="bottom" constant="60" id="JdO-w5-xZa"/>
                             <constraint firstItem="KHO-3n-V9t" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Pkx-Is-43i"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="LfB-8H-jIn" secondAttribute="bottom" constant="60" id="a3q-jx-Rgb"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="Mj8-Kz-fwo" secondAttribute="bottom" constant="20" id="cCG-Va-tpA"/>
                             <constraint firstItem="KHO-3n-V9t" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="gyo-iC-8Pw"/>
-                            <constraint firstItem="ICg-Fl-alc" firstAttribute="width" secondItem="E7y-GG-QwB" secondAttribute="width" id="ih8-as-Msf"/>
                             <constraint firstAttribute="trailing" secondItem="jmB-Eo-kaY" secondAttribute="trailing" id="lk3-7R-7j6"/>
                             <constraint firstItem="ZvZ-FY-Og8" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="nOQ-R5-pHn"/>
                             <constraint firstItem="LfB-8H-jIn" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="oqg-55-JE6"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="jmB-Eo-kaY" secondAttribute="bottom" constant="60" id="sP9-s0-aEM"/>
-                            <constraint firstItem="Mj8-Kz-fwo" firstAttribute="width" secondItem="E7y-GG-QwB" secondAttribute="width" id="sy8-ZL-wqP"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ICg-Fl-alc" secondAttribute="bottom" constant="20" id="td5-Nh-Dbf"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="E7y-GG-QwB" secondAttribute="bottom" constant="20" id="u6r-9A-zQH"/>
-                            <constraint firstItem="Mj8-Kz-fwo" firstAttribute="leading" secondItem="E7y-GG-QwB" secondAttribute="trailing" id="ueL-li-tBA"/>
                         </constraints>
                     </view>
-                    <connections>
-                        <outlet property="effectsButton" destination="Mj8-Kz-fwo" id="TKG-dS-88o"/>
-                        <outlet property="filtersButton" destination="ICg-Fl-alc" id="HPp-Oh-F2e"/>
-                        <outlet property="masksButton" destination="E7y-GG-QwB" id="UX1-G8-zff"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

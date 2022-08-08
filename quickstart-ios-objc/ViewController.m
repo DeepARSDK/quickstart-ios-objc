@@ -173,6 +173,10 @@
 
 }
 
+- (void)didFinishShutdown{
+    
+}
+
 - (void)faceVisiblityDidChange:(BOOL)faceVisible {
 
 }

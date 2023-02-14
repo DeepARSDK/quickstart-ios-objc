@@ -53,7 +53,7 @@
     self.cameraController = [[CameraController alloc] init];
     self.cameraController.deepAR = self.deepar;
 
-    [self.cameraController startCamera];
+    [self.cameraController startCameraWithAudio:YES];
 
     AVAudioSession *session = [AVAudioSession sharedInstance];
     [session setCategory:AVAudioSessionCategoryPlayAndRecord withOptions:AVAudioSessionCategoryOptionMixWithOthers error:nil];
